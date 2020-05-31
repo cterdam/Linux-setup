@@ -21,20 +21,25 @@ call plug#begin('~/.vim/plugged')
 let g:plug_timeout=912
 Plug 'https://github.com/vim-syntastic/syntastic.git'
 Plug 'https://github.com/jiangmiao/auto-pairs.git'
-Plug 'https://github.com/ycm-core/YouCompleteMe.git', 
-    \ { 'do':'python3 install.py --clangd-completer --all' }
+Plug 'https://github.com/ycm-core/YouCompleteMe.git',
+            \ { 'do':'python3 install.py --clangd-completer --all' }
 Plug 'https://github.com/preservim/nerdcommenter.git'
 Plug 'itchyny/lightline.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'preservim/nerdtree'
+Plug 'haya14busa/incsearch.vim'
 call plug#end()
 
 " BEGINS YCM SETTINGS --------------------------------------------------------
 
 set completeopt=longest,menu
-let g:ycm_global_ycm_extra_conf = 
-    \ '/home/sterdam/.vim/plugged/YouCompleteMe
-    \ /third_party/ycmd/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf =
+            \ '/home/sterdam/.vim/plugged/YouCompleteMe
+            \ /third_party/ycmd/.ycm_extra_conf.py'
+map <F6> :YcmCompleter GetDoc<CR>
+map <F7> :YcmCompleter GoToDefinition<CR>
+map <F8> :YcmCompleter GetType<CR>
+map <F12> :YcmCompleter FixIt<CR>
 
 " BEGINS NERD-COMMENTER SETTINGS ---------------------------------------------
 
@@ -42,7 +47,7 @@ let g:ycm_global_ycm_extra_conf =
 let g:NERDSpaceDelims = 1
 " Use compact syntax for prettified multi-line comments
 let g:NERDCompactSexyComs = 1
-" Align line-wise comment delimiters flush left instead of following code 
+" Align line-wise comment delimiters flush left instead of following code
 " indentation
 let g:NERDDefaultAlign = 'left'
 " Allow commenting and inverting empty lines (useful when commenting a region)
@@ -61,8 +66,16 @@ map <F4> <plug>NERDCommenterAltDelims
 map <leader>s <plug>NERDCommenterSexy
 
 " BEGINS VIM-AUTOFORMAT SETTINGS ---------------------------------------------
+
 let g:python3_host_prog = '/usr/bin/python3'
 map <F5> :Autoformat<CR>
 
 " BEGINS NERDTREE SETTINGS ---------------------------------------------------
+
 map <F2> :NERDTreeToggle<CR>
+
+" BEGINS INCSEARCH SETTINGS --------------------------------------------------
+
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
