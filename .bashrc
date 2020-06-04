@@ -16,6 +16,11 @@ alias count='ls | wc -l'
 alias rmlock='sudo rm /var/lib/apt/lists/lock'
 alias bashrc='vim ~/.bashrc'
 alias vimrc='vim ~/.vimrc'
+alias emacs='emacs -nw'
+alias Desktop='cd ~/Desktop'
+alias Downloads='cd ~/Downloads'
+alias Documents='cd ~/Documents'
+alias fonts='cd /usr/share/fonts'
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
@@ -229,3 +234,21 @@ source $OSH/oh-my-bash.sh
 # Example aliases
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
+
+alias la='ls -a'
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/sterdam/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/sterdam/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/sterdam/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/sterdam/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

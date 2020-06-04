@@ -1,19 +1,21 @@
 set colorcolumn=81
 set number
+set wrap
+set linebreak
+set breakindent
 set smartindent
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
 set timeoutlen=1000 ttimeoutlen=0
-set laststatus=2
-set noshowmode
+set hlsearch
 filetype plugin on
 highlight LineNr ctermfg=grey
 let mapleader = ","
 syntax on
 
-" BEGINS VIM-PLUG SETTINGS ---------------------------------------------------
+" VIM-PLUG -------------------------------------------------------------------
 
 " Specify a directory for plugins
 " Avoid using standard Vim directory names like 'plugin'
@@ -28,9 +30,11 @@ Plug 'itchyny/lightline.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'preservim/nerdtree'
 Plug 'haya14busa/incsearch.vim'
+Plug 'lervag/vimtex'
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 call plug#end()
 
-" BEGINS YCM SETTINGS --------------------------------------------------------
+" YCM ------------------------------------------------------------------------
 
 set completeopt=longest,menu
 let g:ycm_global_ycm_extra_conf =
@@ -41,7 +45,7 @@ map <F7> :YcmCompleter GoToDefinition<CR>
 map <F8> :YcmCompleter GetType<CR>
 map <F12> :YcmCompleter FixIt<CR>
 
-" BEGINS NERD-COMMENTER SETTINGS ---------------------------------------------
+" NERD-COMMENTER -------------------------------------------------------------
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
@@ -65,17 +69,33 @@ map <F3> <plug>NERDCommenterToggle
 map <F4> <plug>NERDCommenterAltDelims
 map <leader>s <plug>NERDCommenterSexy
 
-" BEGINS VIM-AUTOFORMAT SETTINGS ---------------------------------------------
+" VIM-AUTOFORMAT -------------------------------------------------------------
 
 let g:python3_host_prog = '/usr/bin/python3'
 map <F5> :Autoformat<CR>
 
-" BEGINS NERDTREE SETTINGS ---------------------------------------------------
+" NERDTREE -------------------------------------------------------------------
 
 map <F2> :NERDTreeToggle<CR>
 
-" BEGINS INCSEARCH SETTINGS --------------------------------------------------
+" INCSEARCH ------------------------------------------------------------------
 
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
+
+" SYNTASTIC ------------------------------------------------------------------
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" POWERLINE ------------------------------------------------------------------
+
+set laststatus=2
+set noshowmode
