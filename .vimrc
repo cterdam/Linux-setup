@@ -95,7 +95,22 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+map <F10> :call SyntasticToggle()<CR>
+
+function! SyntasticToggle()
+  let g:wi = getloclist(2, {'winid' : 1})
+  if g:wi != {}
+    lclose
+  else
+    Errors
+  endif
+endfunction
+
 " POWERLINE ------------------------------------------------------------------
 
 set laststatus=2
 set noshowmode
+
+" VIM-LATEX-LIVE-PREVIEW -----------------------------------------------------
+
+map <F9> :LLPStartPreview<CR>
