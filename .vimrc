@@ -12,7 +12,6 @@ set timeoutlen=1000 ttimeoutlen=0
 set hlsearch
 filetype plugin on
 highlight LineNr ctermfg=grey
-let mapleader = ","
 syntax on
 
 " VIM-PLUG -------------------------------------------------------------------
@@ -37,13 +36,20 @@ call plug#end()
 " YCM ------------------------------------------------------------------------
 
 set completeopt=longest,menu
+
 let g:ycm_global_ycm_extra_conf =
             \ '/home/sterdam/.vim/plugged/YouCompleteMe
             \ /third_party/ycmd/.ycm_extra_conf.py'
-map <F6> :YcmCompleter GetDoc<CR>
-map <F7> :YcmCompleter GoToDefinition<CR>
+
+map <F6> :YcmCompleter FixIt<CR>
+
+map <F7> :YcmCompleter GoTo<CR>
+map <C-F7> :YcmCompleter GoToDefinition<CR>
+map <S-F7> :YcmCompleter GoToDeclaration<CR>
+map <M-S-F7> :YcmCompleter GoToReferences<CR>
+
 map <F8> :YcmCompleter GetType<CR>
-map <F12> :YcmCompleter FixIt<CR>
+map <C-F8> :YcmCompleter GetDoc<CR>
 
 " NERD-COMMENTER -------------------------------------------------------------
 
@@ -65,9 +71,9 @@ let g:NERDCustomDelimiters = {
             \ 'c': { 'leftAlt': '/*', 'rightAlt': '*/', 'left': '//' },
             \ 'cpp': { 'leftAlt': '/*', 'rightAlt': '*/', 'left': '//' },
             \ 'sh': { 'left': '#' }, '': {'left': '"'} }
-map <F3> <plug>NERDCommenterToggle
-map <F4> <plug>NERDCommenterAltDelims
-map <leader>s <plug>NERDCommenterSexy
+map <F12> <plug>NERDCommenterToggle
+map <M-F12> <plug>NERDCommenterAltDelims
+map <S-F12> <plug>NERDCommenterSexy
 
 " VIM-AUTOFORMAT -------------------------------------------------------------
 
@@ -93,9 +99,9 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
 
-map <F10> :call SyntasticToggle()<CR>
+map <F3> :call SyntasticToggle()<CR>
 
 function! SyntasticToggle()
   let g:wi = getloclist(2, {'winid' : 1})
@@ -113,4 +119,4 @@ set noshowmode
 
 " VIM-LATEX-LIVE-PREVIEW -----------------------------------------------------
 
-map <F9> :LLPStartPreview<CR>
+map <F4> :LLPStartPreview<CR>
