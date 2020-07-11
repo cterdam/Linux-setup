@@ -22,6 +22,7 @@ alias fonts='cd /usr/share/fonts'
 alias llz.joshlee@gmail.com='mutt -F ~/.mutt/muttrc-llz.joshlee@gmail.com'
 alias cmustuco@gmail.com='mutt -F ~/.mutt/muttrc-cmustuco@gmail.com'
 alias liangzel@andrew.cmu.edu='mutt -F ~/.mutt/muttrc-liangzel@andrew.cmu.edu'
+alias mails='bash ~/.mutt/start_mails.sh'
 
 export PATH="/home/sterdam/Documents/PSIP2020/alamo-linux64:$PATH"
 
