@@ -10,9 +10,21 @@ set shiftwidth=4
 set expandtab
 set timeoutlen=1000 ttimeoutlen=0
 set hlsearch
+set background=dark
 filetype plugin on
 highlight LineNr ctermfg=grey
 syntax on
+
+map <Leader>1 :tabn 1<CR>
+map <Leader>2 :tabn 2<CR>
+map <Leader>3 :tabn 3<CR>
+map <Leader>4 :tabn 4<CR>
+map <Leader>5 :tabn 5<CR>
+map <Leader>6 :tabn 6<CR>
+map <Leader>7 :tabn 7<CR>
+map <Leader>8 :tabn 8<CR>
+map <Leader>9 :tabn 9<CR>
+map <Leader>0 :tabn 10<CR>
 
 " VIM-PLUG -------------------------------------------------------------------
 
@@ -97,10 +109,10 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
+let g:syntastic_check_on_wq = 0
 
 map <F3> :call SyntasticToggle()<CR>
 
