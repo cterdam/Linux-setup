@@ -24,7 +24,10 @@ alias cmustuco@gmail.com='mutt -F ~/.mutt/muttrc-cmustuco@gmail.com'
 alias liangzel@andrew.cmu.edu='mutt -F ~/.mutt/muttrc-liangzel@andrew.cmu.edu'
 alias mails='bash ~/.mutt/start_mails.sh'
 
-export PATH="/home/sterdam/Documents/PSIP2020/alamo-linux64:$PATH"
+alias trident='tmux split-window -h && tmux split-window -v'
+alias latexclean='rm -v *.aux *.dvi *.log *.maf *.mtc *.mtc0 *.mtc1 *.out *.toc'
+
+export PATH="/home/sterdam/Documents/TOF/alamo-linux64:$PATH"
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)

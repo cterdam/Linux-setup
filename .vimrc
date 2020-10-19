@@ -9,11 +9,14 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 set timeoutlen=1000 ttimeoutlen=0
+set scrolloff=5
 set hlsearch
 set background=dark
+set clipboard=unnamedplus
+
+syntax on
 filetype plugin on
 highlight LineNr ctermfg=grey
-syntax on
 
 map <Leader>1 :tabn 1<CR>
 map <Leader>2 :tabn 2<CR>
@@ -25,6 +28,9 @@ map <Leader>7 :tabn 7<CR>
 map <Leader>8 :tabn 8<CR>
 map <Leader>9 :tabn 9<CR>
 map <Leader>0 :tabn 10<CR>
+map <Leader>] :tabn<CR>
+map <Leader>[ :tabp<CR>
+map <Leader>e :tabe<CR>
 
 " VIM-PLUG -------------------------------------------------------------------
 
@@ -36,6 +42,7 @@ Plug 'https://github.com/vim-syntastic/syntastic.git'
 Plug 'https://github.com/jiangmiao/auto-pairs.git'
 Plug 'https://github.com/ycm-core/YouCompleteMe.git',
             \ { 'do':'python3 install.py --clangd-completer --all' }
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/preservim/nerdcommenter.git'
 Plug 'itchyny/lightline.vim'
 Plug 'Chiel92/vim-autoformat'
@@ -95,7 +102,7 @@ map <F5> :Autoformat<CR>
 
 " NERDTREE -------------------------------------------------------------------
 
-map <F2> :NERDTreeToggle<CR>
+map <F3> :NERDTreeToggle<CR>
 
 " INCSEARCH ------------------------------------------------------------------
 
@@ -109,12 +116,13 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
-map <F3> :call SyntasticToggle()<CR>
+map <F1> :SyntasticToggleMode<CR>
+map <F2> :call SyntasticToggle()<CR>
 
 function! SyntasticToggle()
   let g:wi = getloclist(2, {'winid' : 1})
