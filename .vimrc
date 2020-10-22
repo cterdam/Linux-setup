@@ -37,6 +37,7 @@ map <Leader>e :tabe<CR>
 " Specify a directory for plugins
 " Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
+
 let g:plug_timeout=912
 Plug 'https://github.com/vim-syntastic/syntastic.git'
 Plug 'https://github.com/jiangmiao/auto-pairs.git'
@@ -51,6 +52,10 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'lervag/vimtex'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'tpope/vim-surround'
+Plug 'iamcco/mathjax-support-for-mkdp'
+Plug 'iamcco/markdown-preview.vim'
+Plug 'JamshedVesuna/vim-markdown-preview'
+
 call plug#end()
 
 " YCM ------------------------------------------------------------------------
@@ -91,9 +96,9 @@ let g:NERDCustomDelimiters = {
             \ 'c': { 'leftAlt': '/*', 'rightAlt': '*/', 'left': '//' },
             \ 'cpp': { 'leftAlt': '/*', 'rightAlt': '*/', 'left': '//' },
             \ 'sh': { 'left': '#' }, '': {'left': '"'} }
-map <F12> <plug>NERDCommenterToggle
-map <M-F12> <plug>NERDCommenterAltDelims
-map <S-F12> <plug>NERDCommenterSexy
+map <F4> <plug>NERDCommenterToggle
+map <M-F4> <plug>NERDCommenterAltDelims
+map <S-F4> <plug>NERDCommenterSexy
 
 " VIM-AUTOFORMAT -------------------------------------------------------------
 
@@ -125,12 +130,12 @@ map <F1> :SyntasticToggleMode<CR>
 map <F2> :call SyntasticToggle()<CR>
 
 function! SyntasticToggle()
-  let g:wi = getloclist(2, {'winid' : 1})
-  if g:wi != {}
-    lclose
-  else
-    Errors
-  endif
+    let g:wi = getloclist(2, {'winid' : 1})
+    if g:wi != {}
+        lclose
+    else
+        Errors
+    endif
 endfunction
 
 " POWERLINE ------------------------------------------------------------------
@@ -140,4 +145,14 @@ set noshowmode
 
 " VIM-LATEX-LIVE-PREVIEW -----------------------------------------------------
 
-map <F4> :LLPStartPreview<CR>
+map <F10> :LLPStartPreview<CR>
+
+" MARKDOWN-PREVIEW -----------------------------------------------------------
+" Preview Markdown with zero latency in a browser window, w/ mathjax support
+
+map <F9> <plug>MarkdownPreview
+
+" VIM-MARKDOWN-PREVIEW -------------------------------------------------------
+" Use Ctrl+P to preview Github-flavored Markdown, but with some latency
+
+let vim_markdown_preview_github=1
