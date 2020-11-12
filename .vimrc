@@ -52,8 +52,6 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'lervag/vimtex'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'tpope/vim-surround'
-Plug 'iamcco/mathjax-support-for-mkdp'
-Plug 'iamcco/markdown-preview.vim'
 Plug 'JamshedVesuna/vim-markdown-preview'
 
 call plug#end()
@@ -146,11 +144,6 @@ set noshowmode
 " VIM-LATEX-LIVE-PREVIEW -----------------------------------------------------
 
 map <F10> :LLPStartPreview<CR>
-
-" MARKDOWN-PREVIEW -----------------------------------------------------------
-" Preview Markdown with zero latency in a browser window, w/ mathjax support
-
-map <F9> <plug>MarkdownPreview
 
 " VIM-MARKDOWN-PREVIEW -------------------------------------------------------
 " Use Ctrl+P to preview Github-flavored Markdown, but with some latency
