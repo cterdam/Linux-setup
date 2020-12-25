@@ -1,5 +1,6 @@
 set colorcolumn=81
 set number
+set relativenumber
 set wrap
 set linebreak
 set breakindent
@@ -28,8 +29,8 @@ map <Leader>7 :tabn 7<CR>
 map <Leader>8 :tabn 8<CR>
 map <Leader>9 :tabn 9<CR>
 map <Leader>0 :tabn 10<CR>
-map <Leader>] :tabn<CR>
-map <Leader>[ :tabp<CR>
+map <Leader>= :tabn<CR>
+map <Leader>- :tabp<CR>
 map <Leader>e :tabe<CR>
 
 " VIM-PLUG -------------------------------------------------------------------
@@ -39,20 +40,27 @@ map <Leader>e :tabe<CR>
 call plug#begin('~/.vim/plugged')
 
 let g:plug_timeout=912
-Plug 'https://github.com/vim-syntastic/syntastic.git'
-Plug 'https://github.com/jiangmiao/auto-pairs.git'
-Plug 'https://github.com/ycm-core/YouCompleteMe.git',
+Plug 'vim-syntastic/syntastic'
+Plug 'jiangmiao/auto-pairs'
+Plug 'ycm-core/YouCompleteMe',
             \ { 'do':'python3 install.py --clangd-completer --all' }
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'https://github.com/preservim/nerdcommenter.git'
+Plug 'preservim/nerdcommenter'
 Plug 'itchyny/lightline.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'preservim/nerdtree'
 Plug 'haya14busa/incsearch.vim'
-Plug 'lervag/vimtex'
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'tpope/vim-surround'
 Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 't9md/vim-choosewin'
+Plug 'lfv89/vim-interestingwords'
+Plug 'itchyny/vim-cursorword'
+Plug 'tpope/vim-speeddating'
+Plug 'glts/vim-magnum'
+Plug 'glts/vim-radical'
+Plug 'tpope/vim-repeat'
+Plug 'Yggdroot/indentLine'
+Plug 'easymotion/vim-easymotion'
+Plug 'sillybun/vim-repl'
 
 call plug#end()
 
@@ -64,15 +72,20 @@ let g:ycm_global_ycm_extra_conf =
             \ '/home/sterdam/.vim/plugged/YouCompleteMe
             \ /third_party/ycmd/.ycm_extra_conf.py'
 
-map <F6> :YcmCompleter FixIt<CR>
+map <Leader>inc :YcmCompleter GoToInclude<CR>
+map <Leader>dec :YcmCompleter GoToDeclaration<CR>
+map <Leader>def :YcmCompleter GoToDefinition<CR>
+map <Leader>ref :YcmCompleter GoToReferences<CR>
+map <Leader>imp :YcmCompleter GoToImplementation<CR>
+map <Leader>gtt :YcmCompleter GoToType<CR>
 
-map <F7> :YcmCompleter GoTo<CR>
-map <C-F7> :YcmCompleter GoToDefinition<CR>
-map <S-F7> :YcmCompleter GoToDeclaration<CR>
-map <M-S-F7> :YcmCompleter GoToReferences<CR>
+map <Leader>get :YcmCompleter GetType<CR>
+map <Leader>par :YcmCompleter GetParent<CR>
+map <Leader>doc :YcmCompleter GetDoc<CR>
 
-map <F8> :YcmCompleter GetType<CR>
-map <C-F8> :YcmCompleter GetDoc<CR>
+map <Leader>fix :YcmCompleter FixIt<CR>
+map <Leader>for :YcmCompleter Format<CR>
+map <Leader>org :YcmCompleter OrganizeImports<CR>
 
 " NERD-COMMENTER -------------------------------------------------------------
 
@@ -94,14 +107,11 @@ let g:NERDCustomDelimiters = {
             \ 'c': { 'leftAlt': '/*', 'rightAlt': '*/', 'left': '//' },
             \ 'cpp': { 'leftAlt': '/*', 'rightAlt': '*/', 'left': '//' },
             \ 'sh': { 'left': '#' }, '': {'left': '"'} }
-map <F4> <plug>NERDCommenterToggle
-map <M-F4> <plug>NERDCommenterAltDelims
-map <S-F4> <plug>NERDCommenterSexy
 
 " VIM-AUTOFORMAT -------------------------------------------------------------
 
 let g:python3_host_prog = '/usr/bin/python3'
-map <F5> :Autoformat<CR>
+map <F4> :Autoformat<CR>
 
 " NERDTREE -------------------------------------------------------------------
 
@@ -133,6 +143,7 @@ function! SyntasticToggle()
         lclose
     else
         Errors
+        lopen
     endif
 endfunction
 
@@ -141,11 +152,20 @@ endfunction
 set laststatus=2
 set noshowmode
 
-" VIM-LATEX-LIVE-PREVIEW -----------------------------------------------------
-
-map <F10> :LLPStartPreview<CR>
-
 " VIM-MARKDOWN-PREVIEW -------------------------------------------------------
 " Use Ctrl+P to preview Github-flavored Markdown, but with some latency
 
 let vim_markdown_preview_github=1
+
+" VIM-CHOOSEWIN --------------------------------------------------------------
+
+nmap  -  <Plug>(choosewin)
+let g:choosewin_overlay_enable = 1
+
+" VIM_REPL -------------------------------------------------------------------
+
+let g:repl_cursor_down = 1
+let g:repl_python_automerge = 1
+let g:repl_ipython_version = '7'
+nnoremap <Leader>repl :REPLToggle<Cr>
+let g:repl_position = 3

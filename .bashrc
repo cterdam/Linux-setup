@@ -1,5 +1,4 @@
 alias smlnj='rlwrap sml'
-alias clear='clear && clear'
 alias sl='sl -e'
 alias afs='ssh -X liangzel@unix.andrew.cmu.edu'
 alias shark='ssh -Y liangzel@shark.ics.cs.cmu.edu'
@@ -12,22 +11,16 @@ alias vimrc='vim ~/.vimrc'
 alias emacs='emacs -nw'
 
 alias ..='cd ..'
-alias Desktop='cd ~/Desktop'
-alias Downloads='cd ~/Downloads'
-alias Documents='cd ~/Documents'
-alias Pictures='cd ~/Pictures'
-alias Videos='cd ~/Videos'
-alias fonts='cd /usr/share/fonts'
-
-alias llz.joshlee@gmail.com='mutt -F ~/.mutt/muttrc-llz.joshlee@gmail.com'
-alias cmustuco@gmail.com='mutt -F ~/.mutt/muttrc-cmustuco@gmail.com'
-alias liangzel@andrew.cmu.edu='mutt -F ~/.mutt/muttrc-liangzel@andrew.cmu.edu'
-alias mails='bash ~/.mutt/start_mails.sh'
+alias DES='cd ~/Desktop'
+alias DOW='cd ~/Downloads'
+alias DOC='cd ~/Documents'
+alias PIC='cd ~/Pictures'
+alias VID='cd ~/Videos'
+alias FON='cd /usr/share/fonts'
+alias cterdam='cd ~/cterdam'
 
 alias trident='tmux split-window -h && tmux split-window -v'
 alias latexclean='rm -v *.aux *.dvi *.log *.maf *.mtc *.mtc0 *.mtc1 *.out *.toc'
-
-export PATH="/home/sterdam/Documents/TOF/alamo-linux64:$PATH"
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
